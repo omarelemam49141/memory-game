@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* start container */
+.container {
+    width: 1000px;
+    position: relative;
+    margin: 20px auto;
+}
+
+.header {
+    padding: 15px;
+    border: 3px solid rgb(36, 149, 225);
+    display: flex;
+    background-color: #eee;
+    margin-bottom: 20px;
+}
+
+.header p {
+    flex: 1;
+    font-size: 18px;
+}
+
+.header p:last-of-type {
+    text-align: right;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.content.stopClicking {
+    pointer-events: none;
+}
+
+.content .image-container {
+    flex-basis: 180px;
+    height: 180px;
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.content .image-container.flabbed,
+.content .image-container.matched {
+    transform: rotateY(180deg);
+    pointer-events: none;
+}
+
+.content .image-container .face {
+    width: 100%;
+    height: 100%;
+    background-color: #444;
+    border: 3px solid rgb(36, 149, 225);
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    cursor: pointer;
+}
+
+.content .image-container .face.front {
+    transform: rotateY(180deg);
+}
+
+.content .image-container .face.back::before {
+    content: '?';
+    font-size: 120px;
+    color: white;
+}
+
+.content .image-container img {
+    z-index: 1;
+    width: 140px;
+    height: 140px;
+}
+
+.start-game,
+.win-game,
+.lose-game {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(36, 149, 225, 0.8);
+}
+
+.win-game,
+.lose-game {
+    display: none;
+}
+
+.start-game span {
+    display: block;
+    width: fit-content;
+    padding: 10px 30px;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(238, 123, 29);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.win-game span,
+.lose-game span{
+    display: block;
+    width: fit-content;
+    padding: 10px 30px;
+    font-size: 20px;
+    color: white;
+    border-radius: 5px;
+}
+
+.win-game span{
+    background-color: rgb(64, 238, 29);
+}
+
+.lose-game span{
+    background-color: rgb(238, 29, 29);
+}
+
